@@ -12,7 +12,6 @@ router.get("/posts", async (req, res) => {
     const posts = await prisma.post.findMany();
     //res.json(posts);
     res.render("home", { title: "Posts", posts: posts });
-    console.log("Getting all posts");
   } catch (error) {
     console.error(error);
     res.json("Server error");
@@ -83,6 +82,35 @@ router.delete("/posts/:id", async (req, res) => {
     });
     res.json(deletedPost);
     console.log("Deleting one post by ID");
+  } catch (error) {
+    console.error(error);
+    res.json("Server error");
+  }
+});
+
+// Crear la vista para crear y actualizar un post, con un formulario
+
+router.get("/create", async (req, res) => {
+  try {
+    res.render("postForm", { title: "Create a new post" });
+  } catch (error) {
+    console.error(error);
+    res.json("Server error");
+  }
+});
+
+router.post("/create", async (req, res) => {
+  try {
+    const { title, content, published } = req.body;
+    const isPublished = req.body.published === "on" ? true : false;
+    await prisma.post.create({
+      data: {
+        title,
+        content,
+        published: isPublished,
+      },
+    });
+    res.redirect("/posts");
   } catch (error) {
     console.error(error);
     res.json("Server error");
