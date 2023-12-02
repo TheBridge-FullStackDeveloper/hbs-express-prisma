@@ -11,9 +11,8 @@ router.get("/posts", async (req, res) => {
   try {
     const posts = await prisma.post.findMany();
     //res.json(posts);
-    res.render('home', { title: 'Posts', posts: posts});
+    res.render("home", { title: "Posts", posts: posts });
     console.log("Getting all posts");
-    console.log(posts);
   } catch (error) {
     console.error(error);
     res.json("Server error");
@@ -43,13 +42,15 @@ router.post("/posts", async (req, res) => {
 //Crear la vista para mostrar un post
 
 router.get("/posts/:id", async (req, res) => {
+  const { id } = req.params;
   try {
     const postById = await prisma.post.findUnique({
       where: {
-        id: req.params.id,
+        id,
       },
     });
-    res.json(postById);
+    //res.json(postById);
+    res.render("post", { title: postById.title, post: postById });
     console.log("Getting one post by ID");
   } catch (error) {
     console.error(error);
