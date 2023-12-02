@@ -8,7 +8,7 @@ const hbs = create({
   extname: 'hbs',
   defaultLayout: 'main',
   partialsDir: 'views/partials',
-  helpers: require('./utils/helpers'),
+  //helpers: require('./utils/helpers'),
 });
 
 app.use(morgan('dev'));
