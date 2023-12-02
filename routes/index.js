@@ -5,12 +5,15 @@ const router = express.Router();
 const prisma = require("../prisma");
 
 //GET - /posts - Crear la ruta para obtener todos los posts
+//Crear la vista para mostrar todos los posts
 
 router.get("/posts", async (req, res) => {
   try {
     const posts = await prisma.post.findMany();
-    res.json(posts);
+    //res.json(posts);
+    res.render('home', { title: 'Posts', posts: posts});
     console.log("Getting all posts");
+    console.log(posts);
   } catch (error) {
     console.error(error);
     res.json("Server error");
@@ -37,6 +40,7 @@ router.post("/posts", async (req, res) => {
 });
 
 //GET - /posts/:id - Crear la ruta para obtener un post por su id
+//Crear la vista para mostrar un post
 
 router.get("/posts/:id", async (req, res) => {
   try {
