@@ -1,3 +1,18 @@
-.title {
-  color: red;
+* {
+  margin: 0;
+  padding: 0;
+}
+
+div ul {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 55px;
+  justify-content: center;
+}
+
+.singlePost {
+  width: 200px;
+  box-shadow: 15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff;
+  border-radius: 16px;
+  margin: 20px;
 }
