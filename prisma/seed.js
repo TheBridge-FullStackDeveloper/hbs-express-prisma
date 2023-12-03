@@ -1,32 +1,34 @@
 const { PrismaClient } = require('@prisma/client');
 const { faker } = require('@faker-js/faker');
 const prisma = new PrismaClient();
-​
+
 async function main() {
-  await prisma.post.deleteMany({}); // <- Borra nada mas ejecutarse
+  await prisma.post.deleteMany({});
+
   const numberOfPosts = 50;
-​
   const posts = [];
-​
-  for (i = 0; i < numberOfPosts; i++) {
+
+  for (let i = 0; i < numberOfPosts; i++) {
     const createdAtTime = faker.date.past();
+    const updatedAtTime = new Date(createdAtTime.getTime() + Math.random() * (new Date().getTime() - createdAtTime.getTime()));
     const post = {
       createdAt: createdAtTime,
-      updatedAt: faker.date.between({ from: createdAtTime, to: new Date().toISOString }),
+      updatedAt: updatedAtTime,
       title: faker.lorem.words({ min: 5, max: 8 }),
       content: faker.lorem.paragraphs({ min: 2, max: 5 }),
-      published: faker.datatype.boolean(0.9),
+      published: faker.datatype.boolean(0.75),
     };
     posts.push(post);
   }
-​
-  const addPosts = async () =>
+
+  const addPosts = async () => {
     await prisma.post.createMany({
       data: posts,
       skipDuplicates: true,
     });
-​
-  addPosts();
+  };
+
+  await addPosts();
 }
 
 main()
