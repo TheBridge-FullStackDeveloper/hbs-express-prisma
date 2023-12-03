@@ -6,7 +6,7 @@ const prisma = require("../prisma");
 router.get("/", async (req, res) => {
   try {
     const allPosts = await prisma.post.findMany();
-    res.json(allPosts);
+    res.render("home", { title: "All the Posts", posts: allPosts });
   } catch (error) {
     res.json("Server Error");
   }
@@ -34,9 +34,8 @@ router.get("/:id", async (req, res) => {
         id: req.params.id,
       },
     });
-    res.json(postID);
+    res.render("post", { title: postID.title, posts: postID });
   } catch (error) {
-    console.log(error);
     res.json("Server Error");
   }
 });
