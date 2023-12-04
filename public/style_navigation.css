@@ -4,11 +4,13 @@ nav {
   background-color: #333;
   padding: 10px;
   color: white;
+  font-family:monospace;
 }
 
 ul {
   padding: 0;
   display: flex;
+  list-style-type: none; /*Quita los puntos de lista */
 }
 
 a {

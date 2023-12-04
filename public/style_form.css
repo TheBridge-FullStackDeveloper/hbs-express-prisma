@@ -1,0 +1,43 @@
+form {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+label {
+    display: block;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    line-height: 1.4;
+}
+
+textarea {
+    resize: vertical;
+}
+
+button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #2f6432;
+}
