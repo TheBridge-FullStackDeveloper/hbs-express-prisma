@@ -11,36 +11,36 @@ router.get("/", async (req, res) => {
     res.json("Server Error");
   }
 });
-router.post("/", async (req, res) => {
+
+router.get("/create", async (req, res) => {
+  res.render("newPost", {title: "Create new post"})
+})
+router.post("/create", async (req, res) => {
   try {
     const { title, content, published } = req.body;
     const newPost = await prisma.post.create({
       data: {
         title,
         content,
-        published,
+        published: !!published,
       },
     });
-    res.json(newPost);
+    res.redirect("/posts");
   } catch (error) {
     res.json("Server Error");
   }
 });
 
-router.get("/:id", async (req, res) => {
-  try {
-    const postID = await prisma.post.findUnique({
-      where: {
-        id: req.params.id,
-      },
-    });
-    res.render("post", { title: postID.title, posts: postID });
-  } catch (error) {
-    res.json("Server Error");
-  }
-});
+router.get("/edit/:id", async (req, res) => {
+  const editID = await prisma.post.findUnique({
+    where: {
+      id: req.params.id,
+    },
+  });
+  res.render("editPost", {title: editID.title, posts: editID})
+})
 
-router.put("/:id", async (req, res) => {
+router.put("/edit/:id", async (req, res) => {
   try {
     const { title, content, published } = req.body;
     const editPost = await prisma.post.update({
@@ -50,10 +50,22 @@ router.put("/:id", async (req, res) => {
       data: {
         title,
         content,
-        published,
+        published: !!published,
       },
     });
-    res.json(editPost);
+    res.redirect(`/posts/${editPost.id}`);
+  } catch (error) {
+    res.json("Server Error");
+  }
+});
+router.get("/:id", async (req, res) => {
+  try {
+    const postID = await prisma.post.findUnique({
+      where: {
+        id: req.params.id,
+      },
+    });
+    res.render("post", { title: postID.title, posts: postID });
   } catch (error) {
     res.json("Server Error");
   }

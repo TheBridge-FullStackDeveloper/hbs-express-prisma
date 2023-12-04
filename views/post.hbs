@@ -1,5 +1,6 @@
 <h1>{{capitalize posts.title}}</h1>
 <div>
+  <a href="/posts/edit/{{posts.id}}"> <button type="edit">Edit post</button></a>
   <p>{{posts.content}}</p>
   <p>Created: {{posts.createdAt}}</p>
   <p>Updated: {{posts.updatedAt}}</p>
