@@ -1,7 +1,7 @@
 <div>
   <h1>{{post.title}}</h1>
-  <p>Content: {{post.content}}</p>
-  <p>Post created: {{formatDate post.createdAt}}</p>
+  <p class="content">Content: {{post.content}}</p>
+  <p class="content">Post created: {{formatDate post.createdAt}}</p>
   <div id="divButtons">
     <a href="/posts/update/{{post.id}}">
       <button>Modify</button>
