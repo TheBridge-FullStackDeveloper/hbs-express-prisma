@@ -2,10 +2,12 @@
   <h1>{{post.title}}</h1>
   <p>Content: {{post.content}}</p>
   <p>Post created: {{formatDate post.createdAt}}</p>
-  <a href="/posts/update/{{post.id}}">
-    <button>Modify post</button>
-  </a>
-  <form action="/posts/delete/{{post.id}}?_method=DELETE" method="post">
-    <button>Delete post</button>
-  </form>
+  <div id="divButtons">
+    <a href="/posts/update/{{post.id}}">
+      <button>Modify</button>
+    </a>
+    <form action="/posts/delete/{{post.id}}?_method=DELETE" method="post">
+      <button>Delete</button>
+    </form>
+  </div>
 </div>
