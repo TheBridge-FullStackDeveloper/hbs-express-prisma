@@ -2,6 +2,6 @@
 <div>
   <a href="/posts/edit/{{posts.id}}"> <button type="edit">Edit post</button></a>
   <p>{{posts.content}}</p>
-  <p>Created: {{posts.createdAt}}</p>
-  <p>Updated: {{posts.updatedAt}}</p>
-</div>
+  <p>Created: {{formatDate posts.createdAt}}</p>
+  <p>Updated: {{formatDate posts.updatedAt}}</p>
+</div> 
