@@ -8,7 +8,7 @@ const hbs = create({
   extname: 'hbs',
   defaultLayout: 'main',
   partialsDir: 'views/partials',
-  helpers: require('./utils/helpers'),
+  //helpers: require('./utils/helpers'),
 });
 
 app.use(morgan('dev'));
@@ -23,6 +23,13 @@ app.set('views', './views');
 
 const router = require('./routes');
 app.use('/', router);
+app.use('/public', express.static('public'));
+
+app.get('/', (req, res) => {
+  res.render('home', {
+      title: 'Home Page'
+  });
+});
 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en puerto ${PORT}`);

@@ -1,0 +1,20 @@
+
+<link rel="stylesheet" href="../public/styles.css">
+<title>{{title}}</title>
+
+<body>
+    <main>
+        <h1>POSTS</h1>
+        <div class="comments">
+            {{#each post}}
+            <a href="/posts/{{this.id}}" class="comment"  >
+                <h2>{{this.title}}</h2>
+                <p>{{this.content}}</p>
+            </a>
+            {{/each}}
+        </div>
+    </main>
+
+</body>
+
+</html>
