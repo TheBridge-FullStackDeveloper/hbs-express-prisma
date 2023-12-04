@@ -10,8 +10,8 @@ async function main() {
 
   for (i = 0; i < numberOfPosts; i++) {
     const post = {
-        title: faker.lorem.word(),
-        content: faker.lorem.text(),
+        title: faker.hacker.noun(),
+        content: faker.hacker.phrase(),
         published: faker.datatype.boolean()
     };
     posts.push(post);
