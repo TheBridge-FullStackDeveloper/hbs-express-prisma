@@ -8,6 +8,8 @@ div ul {
   flex-wrap: wrap;
   margin: 55px;
   justify-content: center;
+  list-style-type: none;
+  text-align: center;
 }
 
 .singlePost {

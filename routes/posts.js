@@ -2,11 +2,23 @@ const express = require("express");
 const router = express.Router();
 const prisma = require("../prisma");
 
-// Crear la vista para crear y actualizar un post, con un formulario
+// GET - /posts - Crear la ruta para obtener todos los posts
+
+router.get("/", async (req, res) => {
+  try {
+    const posts = await prisma.post.findMany();
+    res.render("allPosts", { title: "Cristina", posts: posts });
+  } catch (error) {
+    console.error(error);
+    res.json("Server error");
+  }
+});
+
+// POST - /posts - Crear la ruta para crear un post
 
 router.get("/create", async (req, res) => {
   try {
-    res.render("postForm", { title: "Create a new post" });
+    res.render("postFormCreate", { title: "Create a new post" });
   } catch (error) {
     console.error(error);
     res.json("Server error");
@@ -31,41 +43,7 @@ router.post("/create", async (req, res) => {
   }
 });
 
-//GET - /posts - Crear la ruta para obtener todos los posts
-//Crear la vista para mostrar todos los posts
-
-router.get("/", async (req, res) => {
-  try {
-    const posts = await prisma.post.findMany();
-    //res.json(posts);
-    res.render("home", { title: "Posts", posts: posts });
-  } catch (error) {
-    console.error(error);
-    res.json("Server error");
-  }
-});
-
-//POST - /posts - Crear la ruta para crear un post
-
-router.post("/", async (req, res) => {
-  try {
-    const newPost = await prisma.post.create({
-      data: {
-        title: req.body.title,
-        content: req.body.content,
-        published: req.body.published,
-      },
-    });
-    res.json(newPost);
-    console.log("Creating one post");
-  } catch (error) {
-    console.error(error);
-    res.json("Server error");
-  }
-});
-
-//GET - /posts/:id - Crear la ruta para obtener un post por su id
-//Crear la vista para mostrar un post
+// GET - /posts/:id - Crear la ruta para obtener un post por su id
 
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
@@ -75,8 +53,7 @@ router.get("/:id", async (req, res) => {
         id,
       },
     });
-    res.render("post", { title: postById.title, post: postById });
-    console.log("Getting one post by ID");
+    res.render("singlePost", { title: postById.title, post: postById });
   } catch (error) {
     console.error(error);
     res.json("Server error");
@@ -85,14 +62,34 @@ router.get("/:id", async (req, res) => {
 
 //PUT - /posts/:id - Crear la ruta para actualizar un post por su id
 
-router.put("/:id", async (req, res) => {
+router.get("/update/:id", async (req, res) => {
+  const { id } = req.params;
   try {
-    const updatedPost = await prisma.post.update({
-      where: { id: req.params.id },
-      data: { title: req.body.title },
+    const postById = await prisma.post.findUnique({
+      where: {
+        id,
+      },
     });
-    res.json(updatedPost);
-    console.log("Updating one post by ID");
+    res.render("postFormUpdate", { title: "Update a post", post: postById });
+  } catch (error) {
+    console.error(error);
+    res.json("Server error");
+  }
+});
+
+router.put("/update/:id", async (req, res) => {
+  try {
+    const { title, content, published } = req.body;
+    const isPublished = req.body.published === "on" ? true : false;
+    await prisma.post.update({
+      where: { id: req.params.id },
+      data: {
+        title,
+        content,
+        published: isPublished,
+      },
+    });
+    res.redirect("/posts");
   } catch (error) {
     console.error(error);
     res.json("Server error");
@@ -101,13 +98,12 @@ router.put("/:id", async (req, res) => {
 
 //DELETE - /posts/:id - Crear la ruta para eliminar un post por su id
 
-router.delete("/:id", async (req, res) => {
+router.delete("/delete/:id", async (req, res) => {
   try {
-    const deletedPost = await prisma.post.delete({
+    await prisma.post.delete({
       where: { id: req.params.id },
     });
-    res.json(deletedPost);
-    console.log("Deleting one post by ID");
+    res.redirect("/posts");
   } catch (error) {
     console.error(error);
     res.json("Server error");
