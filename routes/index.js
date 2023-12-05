@@ -121,7 +121,7 @@ router.delete('/posta/:id', async (req, res) => {
 //handlebars post http://localhost:3000/hbs
 //Crear la vista para mostrar todos los posts
 
-router.get('/hbs', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
       const posts = await prisma.post.findMany();
       res.render('posts', { posts }); 
