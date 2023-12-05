@@ -1,0 +1,20 @@
+
+<h1>{{capitalize this.title}}</h1>
+
+
+<form action="/posts/edit/{{posts.id}}?_method=PUT" method="post">
+  <div>
+    <label for="title">Title</label>
+    <input name="title" type="text" value="{{posts.title}}"/>
+  </div>
+
+  <div>
+    <label for="content">Content</label>
+    <input name="content" type="text" value="{{posts.content}}"/>
+  </div>
+<div>
+  <label for="published">Publish</label>
+  <input name="published" type="checkbox" value="true" />
+</div>
+  <button type="submit">Edit</button>
+</form>

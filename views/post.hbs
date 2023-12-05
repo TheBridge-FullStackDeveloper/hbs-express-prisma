@@ -1,0 +1,10 @@
+<h1>{{capitalize posts.title}}</h1>
+<div>
+  <a href="/posts/edit/{{posts.id}}"> <button type="edit">Edit post</button></a>
+  <a href="/posts/delete/{{posts.id}}"> <button type="delete">Delete post</button></a>
+</div>
+<div>
+  <p>{{posts.content}}</p>
+  <p>Created: {{formatDate posts.createdAt}}</p>
+  <p>Updated: {{formatDate posts.updatedAt}}</p>
+</div>

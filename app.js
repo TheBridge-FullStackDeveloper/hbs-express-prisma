@@ -24,6 +24,12 @@ app.set('views', './views');
 const router = require('./routes');
 app.use('/', router);
 
+app.get('/', (req, res) => {
+  res.render('home', {
+      title: 'Ipsum Forum'
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en puerto ${PORT}`);
 });
