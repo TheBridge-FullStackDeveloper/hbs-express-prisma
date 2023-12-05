@@ -1,0 +1,13 @@
+  <h2>Are you sure you want to delete this post?</h2>
+ <form action="/posts/delete/{{posts.id}}?_method=DELETE" method="post">
+ <button>YES</button></form>
+  <a href="/posts/{{posts.id}}"><button>NO</button></a>
+
+  <h1>{{capitalize posts.title}}</h1>
+
+  <div>
+    <p>{{posts.content}}</p>
+    <p>Created: {{formatDate posts.createdAt}}</p>
+    <p>Updated: {{formatDate posts.updatedAt}}</p>
+  </div>
+
