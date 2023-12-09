@@ -28,7 +28,7 @@ router.get("/create", async (req, res) => {
 router.post("/create", async (req, res) => {
   try {
     const { title, content, published } = req.body;
-    const isPublished = req.body.published === "on" ? true : false;
+    const isPublished = published === "on" ? true : false;
     await prisma.post.create({
       data: {
         title,
@@ -80,7 +80,7 @@ router.get("/update/:id", async (req, res) => {
 router.put("/update/:id", async (req, res) => {
   try {
     const { title, content, published } = req.body;
-    const isPublished = req.body.published === "on" ? true : false;
+    const isPublished = published === "on" ? true : false;
     await prisma.post.update({
       where: { id: req.params.id },
       data: {
