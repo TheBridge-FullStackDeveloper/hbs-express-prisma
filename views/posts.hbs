@@ -1,0 +1,8 @@
+<h1>Welcome to {{title}}</h1>
+<p>This is the home page.</p>
+<div>
+  {{#each posts}}
+    <li><a href="/posts/{{this.id}}">{{this.title}} {{this.content}} {{this.published}} </li></a>
+  {{/each}}
+</ul>
+</div>
