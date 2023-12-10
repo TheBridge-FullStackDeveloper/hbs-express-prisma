@@ -1,0 +1,15 @@
+<form action="/posts/update/{{post.id}}?_method=PUT" method="post">
+  <div>
+    <label for="title">Title</label>
+    <input name="title" type="text" value="{{post.title}}" />
+  </div>
+  <div>
+    <label for="content">Content</label>
+    <input name="content" type="text" value="{{post.content}}" />
+  </div>
+  <div>
+    <label for="published">Published</label>
+    <input name="published" type="checkbox" value="{{post.published}}" />
+  </div>
+  <button type="submit">Update</button>
+</form>

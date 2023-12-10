@@ -1,6 +1,7 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-// tus rutas aqui
+const postsRoutes = require("./posts");
+router.use("/posts", postsRoutes);
 
 module.exports = router;

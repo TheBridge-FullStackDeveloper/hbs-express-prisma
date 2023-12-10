@@ -1,0 +1,13 @@
+<div>
+  <h1>{{post.title}}</h1>
+  <p class="content">Content: {{post.content}}</p>
+  <p class="content">Post created: {{formatDate post.createdAt}}</p>
+  <div id="divButtons">
+    <a href="/posts/update/{{post.id}}">
+      <button>Modify</button>
+    </a>
+    <form action="/posts/delete/{{post.id}}?_method=DELETE" method="post">
+      <button>Delete</button>
+    </form>
+  </div>
+</div>
