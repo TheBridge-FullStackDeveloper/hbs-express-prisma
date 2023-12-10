@@ -21,8 +21,22 @@ app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 app.set('views', './views');
 
+app.get('/', (req, res) => {
+  res.render('posts', {
+      title: 'HBS'
+  });
+});
+
+app.get('/about', (req, res) => {
+  res.render('about', {
+      title: 'About'
+  });
+});
+
+
 const router = require('./routes');
 app.use('/', router);
+
 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en puerto ${PORT}`);
