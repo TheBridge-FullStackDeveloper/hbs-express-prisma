@@ -21,6 +21,12 @@ app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 app.set('views', './views');
 
+app.get('/', (req, res) => {
+  res.render('home', {
+      title: 'HBS'
+  });
+});
+
 const router = require('./routes');
 app.use('/', router);
 
