@@ -34,7 +34,7 @@ const updatedPost = await prisma.post.findUnique({
         id,
     },
 });
-res.render('updateid', {title: updatedPost.title, post: updatedPost });
+res.render('updateid', {title: updatedPost?.title, post: updatedPost });
 });
 
 router.put('/update/:id', async (req, res) => {
@@ -71,7 +71,7 @@ router.get('/:id', async (req, res) => {
         },
     });
 
-    res.render('idpost', { title: findPost.title, post: findPost})
+    res.render('idpost', { title: findPost?.title, post: findPost})
 });
 
 
