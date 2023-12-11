@@ -15,7 +15,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
-app.use(express.static('public'));
+app.use('/posts/public',express.static('public'));
 
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
@@ -23,6 +23,13 @@ app.set('views', './views');
 
 const router = require('./routes');
 app.use('/', router);
+app.use('/public', express.static('public'));
+
+app.get('/', (req, res) => {
+  res.render('home', {
+      title: 'Home Page'
+  });
+});
 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en puerto ${PORT}`);

@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="../public/styles.css">
+
+<h1>POST</h1>
+<div class="comment">
+    <h2>{{post.title}}</h2>
+    <p>{{post.content}}</p>
+    <div class="comment-buttons">
+        <a href="/posts/update/{{post.id}}">
+            <button class="edit-button">Editar</button>
+        </a>
+        <a>
+            <form action="/posts/delete/{{post.id}}?_method=DELETE" method="post">
+                <button class="delete-button">Borrar</button>
+            </form>
+        </a>
+    </div>
+</div>
+
