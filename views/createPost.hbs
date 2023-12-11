@@ -1,0 +1,13 @@
+{{!-- views/createPost.hbs --}}
+<form action="/create-posts" method="POST">
+  <label for="title">Título:</label>
+  <input type="text" id="title" name="title" required>
+
+  <label for="content">Contenido:</label>
+  <textarea id="content" name="content" required></textarea>
+
+  <label for="published">Publicado:</label>
+  <input type="checkbox" id="published" name="published">
+
+  <button type="submit">Crear Post</button>
+</form>

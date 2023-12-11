@@ -1,3 +1,45 @@
+/* styles.css - Asegúrate de que este archivo esté en la carpeta public/css/ */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+nav {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+}
+
+nav a {
+  color: #fff;
+  padding: 0 15px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+nav ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+nav ul li {
+  display: inline;
+}
+
 .title {
   color: red;
+}
+
+.post {
+  background-color: #fff;
+  margin: 20px;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.post h2 {
+  margin-top: 0;
 }

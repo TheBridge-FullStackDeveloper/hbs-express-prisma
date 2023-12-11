@@ -1,0 +1,13 @@
+{{!-- views/postDetails.hbs --}}
+<article>
+  <h1>{{post.title}}</h1>
+  <div>{{post.content}}</div>
+  {{#if post.published}}
+    <small>Publicado</small>
+  {{else}}
+    <small>No Publicado</small>
+  {{/if}}
+  <form action="/posta/{{post.id}}?_method=DELETE" method="POST">
+  <button type="submit">Eliminar Post</button>
+</form>
+</article>

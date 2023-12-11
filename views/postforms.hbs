@@ -1,0 +1,12 @@
+
+  <h1>{{ pageTitle }}</h1>
+  <form method="POST" action="{{ formAction }}">
+    <label for="title">Título:</label>
+    <input type="text" id="title" name="title" value="{{ post.title }}" required>
+    <br>
+    <label for="content">Contenido:</label>
+    <textarea id="content" name="content" required>{{ post.content }}</textarea>
+    <br>
+    <input type="submit" value="Guardar">
+  </form>
+
