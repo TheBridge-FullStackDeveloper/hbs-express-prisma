@@ -1,0 +1,7 @@
+<form action="/posts/update/{{post.id}}?_method=PUT" method="post">
+  <label for="title">Title</label>
+  <input name="title" type="text"  value= '{{post.title}}'/> 
+  <label for="content">content</label>
+  <input name="content" type="text" value= '{{post.content}}'/> 
+  <button type="submit">Update</button>
+</form>

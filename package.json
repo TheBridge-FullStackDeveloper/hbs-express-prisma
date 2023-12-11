@@ -1,11 +1,14 @@
 {
   "name": "clase-hbs",
   "version": "1.0.0",
-  "description": "",
+  "description": "![logotipo de The Bridge](https://user-images.githubusercontent.com/27650532/77754601-e8365180-702b-11ea-8bed-5bc14a43f869.png 'logotipo de The Bridge')",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon app.js"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
   },
   "keywords": [],
   "author": "",
@@ -18,7 +21,8 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
-    "nodemon": "^3.0.1",
-    "prisma": "^5.6.0"
+    "@faker-js/faker": "^8.3.1",
+    "nodemon": "^3.0.2",
+    "prisma": "^5.7.0"
   }
 }
