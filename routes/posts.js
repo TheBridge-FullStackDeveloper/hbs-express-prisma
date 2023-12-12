@@ -1,9 +1,10 @@
+// Import required modules
 const express = require ('express');
 const router = express.Router();
-
 const prisma = require('../prisma/client');
 const isAuthenticated = require('../middleware/isAuthenticated');
 
+// Display All Posts
 router.get('/', isAuthenticated, async (req, res) => {
     try {
         const posts = await prisma.post.findMany();
@@ -14,6 +15,7 @@ router.get('/', isAuthenticated, async (req, res) => {
     }
 });
 
+// Display the post creation form
 router.get('/create', async (req, res) => {
     try {
         res.render('postForm', { title: 'Create a post' });
@@ -23,6 +25,7 @@ router.get('/create', async (req, res) => {
     }
 });
 
+// Creation a new post
 router.post('/create', async (req, res) => {
     try {
         const { title, content } = req.body;
@@ -39,6 +42,7 @@ router.post('/create', async (req, res) => {
     }
 });
 
+// Update a post
 router.put('/update/:id', async (req, res) => {
     try {
         const { title, content } = req.body;
@@ -59,6 +63,7 @@ router.put('/update/:id', async (req, res) => {
     }
 });
 
+// Delete a post
 router.delete('/delete/:id', async (req, res) => {
     try {
         await prisma.post.delete({
@@ -73,6 +78,7 @@ router.delete('/delete/:id', async (req, res) => {
     }
 });
 
+// Display the post update form
 router.get('/update/:id', async (req, res) => {
     try {
         const post = await prisma.post.findUnique({
@@ -87,6 +93,7 @@ router.get('/update/:id', async (req, res) => {
     }
 });
 
+// Display a single post
 router.get('/:id', async (req, res) => {
     try {
         const post = await prisma.post.findUnique({

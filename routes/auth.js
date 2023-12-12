@@ -1,4 +1,3 @@
-// routes/auth.js
 const express = require('express');
 const bcrypt = require('bcrypt');
 const router = express.Router();
@@ -30,10 +29,12 @@ router.post('/login', passport.authenticate('local', {
     failureFlash: true,
 }));
 
+// LogIn Template
 router.get('/login-page', (req, res) => {
     res.render('login');
 });
 
+// Register Template
 router.get('/register-page', (req, res) => {
     res.render('register');
 });
