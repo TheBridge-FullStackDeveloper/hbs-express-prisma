@@ -2,7 +2,9 @@ const express = require('express');
 const router = express.Router();
 
 const posts = require('./posts');
-// tus rutas aqui
+const auth = require('./auth')
+
 router.use('/posts', posts);
+router.use('/auth', auth)
 
 module.exports = router;

@@ -18,3 +18,9 @@ model Post {
   content   String?
   published Boolean  @default(false)
 }
+
+model User {
+  id        String   @id @default(uuid())
+  username  String   @unique
+  password  String
+}

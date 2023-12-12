@@ -2,8 +2,9 @@ const express = require ('express');
 const router = express.Router();
 
 const prisma = require('../prisma/client');
+const isAuthenticated = require('../middleware/isAuthenticated');
 
-router.get('/', async (req, res) => {
+router.get('/', isAuthenticated, async (req, res) => {
     try {
         const posts = await prisma.post.findMany();
         res.render('posts', { title: 'Posts', posts: posts });
