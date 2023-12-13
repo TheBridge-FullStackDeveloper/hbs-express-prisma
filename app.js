@@ -2,6 +2,7 @@
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
+const prisma = require('./prisma/client')
 
 // Import middleware and libraries
 const morgan = require('./middleware/morgan'); 
@@ -39,11 +40,6 @@ app.use(passport.session());
 // Import routes from routes file and mount them
 const router = require('./routes');
 app.use('/', router);
-
-// Define middleware for handling the homepage route
-app.get('/', (req, res) => {
-  res.render('home');
-});
 
 // Start the server on specified port
 app.listen(PORT, () => {

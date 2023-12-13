@@ -7,8 +7,31 @@ const isAuthenticated = require('../middleware/isAuthenticated');
 // Display All Posts
 router.get('/', isAuthenticated, async (req, res) => {
     try {
-        const posts = await prisma.post.findMany();
-        res.render('posts', { title: 'Posts', posts: posts });
+        const posts = await prisma.post.findMany({
+            include: {
+                author: true,
+            },
+        });
+        res.render('posts', { title: 'Posts', posts: posts});
+    } catch (e) {
+        console.log(e);
+        res.json('Server error');
+    }
+});
+
+// Display All Posts from User
+router.get('/profile', isAuthenticated, async (req, res) => {
+    try {
+        const userId = req.user.id;
+        const user = await prisma.user.findUnique({
+            where: {
+                id: userId,
+            },
+            include: {
+                posts: true,
+            },
+        });
+        res.render('home', { title: 'Posts', user: user});
     } catch (e) {
         console.log(e);
         res.json('Server error');
@@ -16,7 +39,7 @@ router.get('/', isAuthenticated, async (req, res) => {
 });
 
 // Display the post creation form
-router.get('/create', async (req, res) => {
+router.get('/create', isAuthenticated, async (req, res) => {
     try {
         res.render('postForm', { title: 'Create a post' });
     } catch (e) {
@@ -29,10 +52,12 @@ router.get('/create', async (req, res) => {
 router.post('/create', async (req, res) => {
     try {
         const { title, content } = req.body;
+        const authorId = req.user.id;
         await prisma.post.create({
             data: {
                 title,
                 content,
+                authorId
             },
         });
         res.redirect('/posts');
@@ -43,7 +68,7 @@ router.post('/create', async (req, res) => {
 });
 
 // Update a post
-router.put('/update/:id', async (req, res) => {
+router.put('/update/:id', isAuthenticated, async (req, res) => {
     try {
         const { title, content } = req.body;
         const post = await prisma.post.update({
