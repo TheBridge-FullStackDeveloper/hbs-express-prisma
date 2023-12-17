@@ -1,12 +1,18 @@
 <body>
     <h2>User: {{ user.username }}</h2>
+    <p>Email: {{user.email}}</p>
+    
+    
+    <a href='/user/update'><button>Update Profile</button></a></li>
     <ul>
         {{#each user.posts}}
+        <a href="/posts/{{this.id}}" class="comment"  >
             <li>
                 <h3>{{ title }}</h3>
                 <p>{{ content }}</p>
                 <p>Published: {{ published }}</p>
             </li>
+        </a>
         {{/each}}
     </ul>
 </body>
