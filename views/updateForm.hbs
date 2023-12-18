@@ -1,7 +1,8 @@
-<title>{{title}}</title>
-<link rel="stylesheet" href="../public/style_form.css">
+<link rel="stylesheet" href="../../public/updatePost.css">
 
-    <form action='/posts/update/{{post.id}}?_method=PUT' method='post'>
+<title>{{title}}</title>
+<div class="updateForm">
+    <form action='/user/update/{{post.id}}?_method=PUT' method='post'>
         <div>
             <label for="title">Title</label>
             <input name="title" type="text" value="{{post.title}}">
@@ -12,3 +13,4 @@
         </div>
         <button type="submit">Update</button>
     </form>
+</div>

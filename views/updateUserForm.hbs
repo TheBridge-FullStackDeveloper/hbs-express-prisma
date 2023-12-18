@@ -1,14 +1,13 @@
-<title>{{title}}</title>
-<link rel="stylesheet" href="../public/style_form.css">
+<link rel="stylesheet" href="../public/updateProfile.css">
 
+<title>{{title}}</title>
+<div class="updateProfile">
     <form action='/user/update?_method=PUT' method='post'>
         <div>
             <label for="email">Email</label>
             <input name="email" type="email" value="{{user.email}}">
         </div>
-        <div>
-            <label for="content">Photo</label>
-            <textarea name="content">{{post.content}}</textarea>
-        </div>
         <button type="submit">Update</button>
     </form>
+</div>
+

@@ -1,0 +1,39 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+.updateProfile form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.updateProfile div {
+    margin-bottom: 15px;
+}
+
+.updateProfile label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.updateProfile input,
+textarea {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.updateProfile button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+}
+
+.updateProfile button:hover {
+    background-color: #45a049;
+}
