@@ -1,0 +1,11 @@
+<h1>{{post.title}}</h1>
+<p>{{post.content}}</p>
+<small>Published: {{post.published}}</small>
+<br>
+<a href="/posts/{{post.id}}/edit">Edit</a>
+<form method="POST" action="/posts/{{post.id}}?_method=DELETE">
+  <button type="submit">Delete</button>
+</form>
+
+
+
