@@ -1,0 +1,11 @@
+<h1>{{#if post}}Edit Post{{else}}Create Post{{/if}}</h1>
+<form method="POST" action="{{#if post}}/posts/{{post.id}}?_method=PUT{{else}}/posts{{/if}}">
+  <label>Title</label>
+  <input type="text" name="title" value="{{post.title}}" required />
+  <label>Content</label>
+  <textarea name="content">{{post.content}}</textarea>
+  <label>Published</label>
+  <input type="checkbox" name="published" {{#if post.published}}checked{{/if}} />
+  <button type="submit">{{#if post}}Update{{else}}Create{{/if}}</button>
+</form>
+
