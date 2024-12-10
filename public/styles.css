@@ -77,7 +77,7 @@ textarea.form-input {
 .form-input {
   margin: 0;
   padding: 0;
-  width: calc(100% - 2em); /* Subtract the total horizontal margins */
+  width: calc(100% - 2em);
   margin-left: 1em;
   margin-right: 1em;
   box-sizing: border-box;
@@ -101,7 +101,7 @@ textarea.form-input {
   padding: 2em;
 }
 .main-container .post-container:nth-child(2n) {
-  background-color: rgb(211, 211, 211); /* Different background for even items */
+  background-color: rgb(211, 211, 211);
 }
 
 .flex {
