@@ -1,0 +1,14 @@
+<h1>Titulo de la página: {{titlePage}}</h1>
+<p>Titulo del Comentario: <b>{{post.title}}</b></p>
+<p>Contenido del Comentario: <b>{{post.content}}</b></p>
+<p>Fecha de creación del Comentario: <b>{{ formatDate post.createdAt "DD/MM/YYYY"}}</b></p>
+<p>Fecha última nodificación del Comentario: <b>{{formatDate post.updatedAt "DD/MM/YYYY"}}</b></p>
+<p>Estado del Comentario: <b>{{#if post.published}}Publicado{{else}}Privado{{/if}}</b></p>
+<form action="/posts/{{post.id}}?_method=PUT" method="post">
+   {{> form post}}
+   <button type="submit">Update</button>
+</form>
+
+<form action="/posts/{{post.id}}?_method=DELETE" method="post">
+   <button type="submit">Delete</button>
+</form>
