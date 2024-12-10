@@ -110,3 +110,9 @@ textarea.form-input {
   justify-content: center;
 
 }
+
+.date {
+  color: #7e7e7e;
+  font-size: 0.8em;
+  text-align: right;
+}
