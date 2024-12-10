@@ -1,3 +1,112 @@
-.title {
-  color: red;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Courier New', Courier, monospace;
+}
+p {
+  margin: 0;
+}
+
+button {
+  all: unset;
+  display: inline-block;
+  cursor: pointer;
+}
+
+
+.nav-bar {
+  display: flex;
+  list-style: none;
+  gap: 1em;
+  background-color: #c7c7c7;
+  margin: 0;
+  padding: 1em;
+  border-bottom: 1px solid;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+}
+.destruct-button {
+  background-color: rgb(211, 90, 90);
+  padding: 0.5em;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  border: 1px solid;
+  text-decoration: none;
+  color: black;
+}
+
+.special-form h2 {
+  margin: 0;
+  margin-left: 0.5em;
+  margin-top: 0.5em;
+  
+}
+
+textarea.form-input {
+  min-height: 4em;
+}
+
+.nav-component {
+  border: 1px solid;
+  padding: 0.5em;
+  background-color: #e7e7e7;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+}
+
+.active {
+  text-decoration: underline;
+}
+.nav-component a {
+  text-decoration: none;
+  color: black;
+}
+
+.special-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-input {
+  margin: 0;
+  padding: 0;
+  width: calc(100% - 2em); /* Subtract the total horizontal margins */
+  margin-left: 1em;
+  margin-right: 1em;
+  box-sizing: border-box;
+}
+
+.delete {
+  background-color: rgb(211, 90, 90);
+}
+
+.main-container {
+  border: 1px solid;
+  max-width: 900px;
+  margin: auto;
+  margin-top: 2em;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.post-container {
+  padding: 2em;
+}
+.main-container .post-container:nth-child(2n) {
+  background-color: rgb(211, 211, 211); /* Different background for even items */
+}
+
+.flex {
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+
 }
