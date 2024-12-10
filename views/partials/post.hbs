@@ -1,0 +1,16 @@
+<div class="post-container">
+    <div class="post-header">
+        <h2 class="post-title">{{title}}</h2>
+        {{#if showDelete}}
+        <div class="flex">
+            <a class="nav-component" style="align-self: center;" href="/posts/update/{{id}}">Update</a>
+            <a class="destruct-button" href="/posts/confirm/{{id}}">Delete</a>
+        </div>
+        {{/if}}
+    </div>
+    <p class="post-content">{{content}}</p>
+    <div class="post-info">
+        <p class="date">Created at: {{formatDate createdAt}}</p>
+        <p class="date">Last updated at: {{formatDate updatedAt}}</p>
+    </div>
+</div>

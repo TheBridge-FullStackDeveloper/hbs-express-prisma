@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const morgan = require('morgan');
+const { errorHandler } = require('./middleware/errorHandler');
 const methodOverride = require('method-override');
 const { create } = require('express-handlebars');
 const hbs = create({
@@ -23,6 +24,8 @@ app.set('views', './views');
 
 const router = require('./routes');
 app.use('/', router);
+app.use(errorHandler);
+
 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en puerto ${PORT}`);

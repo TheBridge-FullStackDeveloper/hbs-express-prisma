@@ -1,0 +1,25 @@
+<div class="special-form">
+    <form action="{{actionUrl}}" method="POST" class="post-form">
+        <h2>Title</h2>
+            <input class="form-input"
+                type="text"
+                id="title"
+                name="title"
+                value="{{defaultTitle}}"
+                placeholder="Enter post title"
+                required
+            />
+            <h2>Content</h2>
+            <textarea class="form-input"
+                id="content"
+                name="content"
+                placeholder="Enter post content"
+                required
+            >{{defaultContent}}</textarea>
+    
+    
+        <button type="submit" class="submit-button nav-component">
+            {{#if isUpdate}}Update Post{{else}}Create Post{{/if}}
+        </button>
+    </form>
+</div>
