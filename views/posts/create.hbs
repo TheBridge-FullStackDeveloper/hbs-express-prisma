@@ -1,0 +1,14 @@
+<h1>Crear un Nuevo Post</h1>
+<form action="/posts/create" method="POST">
+  <label for="title">Título:</label>
+  <input type="text" name="title" id="title" required>
+
+  <label for="content">Contenido:</label>
+  <textarea name="content" id="content" required></textarea>
+
+  <label for="published">
+    <input type="checkbox" name="published" id="published"> Publicar
+  </label>
+
+  <button type="submit">Crear</button>
+</form>
