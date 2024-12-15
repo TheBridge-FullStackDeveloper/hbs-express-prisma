@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const prisma = require('@prisma/client'); // Make sure Prisma client is correctly set up
+const prisma = require("../prisma"); // Make sure Prisma client is correctly set up
 
 // Get all posts
 router.get('/', async (req, res) => {
@@ -8,6 +8,7 @@ router.get('/', async (req, res) => {
     const posts = await prisma.post.findMany();
     res.render('posts', { posts }); // Render all posts in a 'posts' view
   } catch (error) {
+    console.log(error);
     res.status(500).send('Error fetching posts');
   }
 });
@@ -36,13 +37,14 @@ router.post('/', async (req, res) => {
     });
     res.redirect('/posts'); // Redirect to the posts page after creation
   } catch (error) {
+    console.log(error);
     res.status(500).send('Error creating the post');
   }
 });
 
 // Update a post
 router.put('/:id', async (req, res) => {
-  const { id } = req.params;
+  const { id } = req.params; 
   const { title, content } = req.body;
   try {
     const updatedPost = await prisma.post.update({
